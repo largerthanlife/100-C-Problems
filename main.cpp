@@ -21,7 +21,7 @@ int main()
 				printf("roosterNUM = %d\nhenNum = %d\nchickNum = %d\n\n",roosterNum, henNum, TOTALNUM - roosterNum - henNum);
 	return 0;
 }
-*/
+
 
 //1.2 借书方案知多少
 //描述：小明有 5 本新书，要借给 A、B、C 三位朋友，若每人每次只能借 1 本，则可以有多少种不同的借法？
@@ -46,3 +46,55 @@ int main()
 	printf("%d methods in total\n", i);
 	return 0;
 }
+
+
+//1.3 打鱼还是晒网
+//描述：某人从1990年1月1日起开始 “三天打鱼两天晒网” 问这个人在以后的某一天中是打鱼还是晒网
+//写过
+//未考虑输入格式问题 仅从简处理
+#include <stdio.h>
+#include <string.h>
+#define MAX 10
+int main()
+{
+	int months[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	char date[MAX];
+	while(1)
+	{
+	int year, month, day;
+	year = month = day = 0;
+	gets(date);
+	int i = 0;
+	while(date[i] != '.')
+		year = year*10 + date[i++] - '0';
+	i++;
+	while(date[i] != '.')
+		month = month*10 + date[i++] - '0';
+	i++;
+	while(i < strlen(date))
+		day = day*10 + date[i++] - '0';
+	//printf("%d %d %d", year, month, day);
+	int difYear, difMonth, difDay;
+	difYear = year - 1990;
+	difMonth = month - 1;
+	difDay = day - 1;
+
+	int numleap = (difYear+2) / 4; //闰年的次数 1992是闰年 1992 - 1990 = 2
+
+	int nummonth = 0; //差几个月
+	for(i = 0; i < difMonth; i++)
+		nummonth += months[i];
+
+	//共差几天
+	int sum = difYear * 365 + numleap + nummonth + difDay;
+
+	printf("difYear = %d\n, difMonth = %d\n, disDay = %d\n", difYear, difMonth, difDay);
+	printf("numleap = %d\n, nummonth = %d\n, sum = %d\n", numleap, nummonth, sum);
+	if(sum % 5  < 3)
+		printf("In this day, he is fishing\n");
+	else
+		printf("In this day, he is dring net\n");
+	}
+	return 0;
+}
+*/
