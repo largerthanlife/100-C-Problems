@@ -97,7 +97,7 @@ int main()
 	}
 	return 0;
 }
-*/
+
 
 //1.4 抓交通肇事犯
 //描述：一辆卡车违反交通规则，撞人后逃跑，现场有三人目击该事件，但都没有记住车号，只记下一些特征
@@ -117,5 +117,33 @@ int main()
 			if(a != b)
 				if(sqrt(a*1000 + a*100 + b*10 + b) - (int)(sqrt(a*1000 + a*100 + b*10 + b)) == 0)
 					printf("It is %d\n", a*1000 + a*100 + b*10 + b);
+	return 0;
+}
+*/
+
+//1.5兔子产子问题
+//有一对兔子，从出生后的第 3 个月起每个月都生一对兔子， 小兔子长到第 3 个月后每个月又生一对兔子
+//假设所有的兔子都不死，问 30 个月内每个月的兔子总数是多少？
+//递归
+//迭代
+#include <stdio.h>
+int recursion(int month)
+{
+	int num;
+	if(month == 1 || month == 2)
+		return 1;
+	else
+		num =  recursion(month - 1) + recursion(month - 2);
+		return num;
+
+}
+int main()
+{
+	for(int i = 1;i <= 30; i++)
+	{
+		printf("%d:%-10d", i, recursion(i));
+		if(i%5 == 0)
+			printf("\n");
+	}
 	return 0;
 }
