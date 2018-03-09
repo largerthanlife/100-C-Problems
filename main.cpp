@@ -147,7 +147,7 @@ int main()
 	}
 	return 0;
 }
-*/
+
 
 //1.6牛顿迭代法求方程根
 //描述：编写用牛顿迭代法求方程根的函数，方程为 ax^3 + bx^2 + cx + d = 0, 系数a, b, c, d由主函数输入， 求 x 在 1 附近的一个实根，由主函数输出
@@ -170,6 +170,35 @@ int main()
 	return 0;
 }
 
+
 //1.7最佳存款方案
 //描述：假设银行一年整存零取的月息为 0.63%。 现在某人手中有一笔钱， 他打算在今后的5年中的每年年底取出1000元 ， 到第 5 年时刚好取完
 //请算出他存钱时应存入多少。
+//本息和还是分开算
+#include <stdio.h>
+#include <math.h>
+#define MONTH 5
+#define MINOR 1000
+#define RATE (0.63/100)
+int main()
+{
+	float sum = 0;
+	for(int i = 0; i < MONTH; i++)
+	{
+		sum += MINOR;
+		sum /= pow((1+RATE), 12) ;
+	}
+	printf("1. %f\n", sum);
+	for(int i = 0; i < MONTH; i++)
+	{
+		sum += MINOR;
+		sum /= (1+ RATE *12) ;
+	}
+	printf("2. %f\n", sum);
+
+	return 0;
+}
+*/
+
+//1.8冒泡排序
+//对 N 个整数（数据由键盘输入）进行升序排列
