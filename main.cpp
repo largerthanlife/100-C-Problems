@@ -198,7 +198,47 @@ int main()
 
 	return 0;
 }
-*/
+
 
 //1.8冒泡排序
 //对 N 个整数（数据由键盘输入）进行升序排列
+//如 N 不固定， 可以用 malloc 分配
+//呃我写的这个不是冒泡 是选择
+#include <stdio.h>
+#define N 15
+int main()
+{
+	int array[] = {8, 7, 9, 5, 3, 10, 11, 20, 6, 11, 15, 21, 18, 22, 23};
+	for(int i = 0; i < N; i++)
+		for(int j = i; j < N; j++)
+			if(array[i] > array[j])
+			{
+				int temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
+	for(int i = 0; i < N; i++)
+		printf("%d ", array[i]);
+	printf("\n");
+	return 0;
+}
+// answer
+#include <stdio.h>
+#define N 15
+int main()
+{
+	int array[] = {8, 7, 9, 5, 3, 10, 11, 24, 6, 11, 15, 21, 18, 22, 23};
+	for(int i = 1; i <= N - 1; i++)
+		for(int j = 0; j < N - i; j++)
+			if(array[j] > array[j+1])
+			{
+				int temp = array[j];
+				array[j] = array[j+1];
+				array[j+1] = temp;
+			}
+	for(int i = 0; i < N; i++)
+		printf("%d ", array[i]);
+	printf("\n");
+	return 0;
+}
+*/
