@@ -241,7 +241,93 @@ int main()
 	printf("\n");
 	return 0;
 }
-*/
+
 
 //1.9折半查找
 // N 个有序整数数列已放在一维数组中，利用二分查找法查找整数 m 在数组中的位置。若找到，则输出其下标值，反之输出 “Not be found!”
+#include <stdio.h>
+#define N 9
+int main()
+{
+	int array[N] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	int left, right, mid;
+
+	int unkown;
+	printf("input:");
+	scanf("%d", &unkown);
+
+	while(unkown != 100) //for test
+	{
+	left = 0;
+	right = N - 1;
+	mid = (left + right) / 2 + 1;
+	while(left != mid)
+	{
+		if(unkown > array[mid])
+		{
+			left = mid;
+			mid = (left + right) / 2 + 1; //这里不加一的话 取不到最后一个数
+
+		}
+		else if(unkown < array[mid])
+		{
+			right = mid;
+			mid = (left + right) / 2;
+		}
+		else
+			break;
+	}
+	if(unkown == array[mid])
+		printf("%d\n", mid);
+	else
+		printf("Not be found!\n");
+
+	printf("input:");
+	scanf("%d", &unkown);
+	}
+	return 0;
+	
+}
+
+//answer
+#include <stdio.h>
+#define N 9
+int main()
+{
+	int array[N] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	int left, right, mid;
+
+	int unkown;
+	printf("input:");
+	scanf("%d", &unkown);
+
+	while(unkown != 100) //for test
+	{
+		left = 0;
+		right = N - 1;
+		mid = (left + right) / 2;
+		while(left <= right)
+		{
+			mid = (left + right) / 2;
+			if(unkown > array[mid])
+				left = mid + 1;
+			else if(unkown < array[mid])
+				right = mid - 1;
+			else
+				break;
+		}
+		if(unkown == array[mid])
+			printf("%d\n", mid);
+		else
+			printf("Not be found!\n");
+
+		printf("input:");
+		scanf("%d", &unkown);
+	}
+	return 0;
+
+}
+*/
+
+//1.10 数制转换
+//描述：给定一个 M 进制的数 x，实现对 x 向任意的一个非 M 进制的数的转换。
