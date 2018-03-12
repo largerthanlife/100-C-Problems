@@ -331,3 +331,42 @@ int main()
 
 //1.10 数制转换
 //描述：给定一个 M 进制的数 x，实现对 x 向任意的一个非 M 进制的数的转换。
+//M -> 10， 10 -> N
+//处理比 10 大的进制又要判断字母 , 而且要用字符串来接收 以前在Mycalculator写过 不赘述
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+	int M, N, x;
+	int Msum = 0; // M 进制的x 应表示为多大的 10进制数
+	int Nsum = 0; // 10 进制的 Msum 表示为多大的 N 进制数
+	int remainder = 0;
+	int i = 0;
+	printf("Input M:");
+	scanf("%d", &M);
+	printf("Input x:");
+	scanf("%d", &x);
+	printf("Input N:");
+	scanf("%d", &N);
+
+	do
+	{
+		remainder = x % 10;
+		Msum += remainder * pow(M, i);
+		i++;
+		x /= 10;
+	}while(x > 0);
+	//printf("%d\n", Msum);
+
+	i = 0;
+	while(Msum > 0)
+	{
+		remainder = Msum % N;
+		Nsum += remainder * pow(10, i);
+		i++;
+		Msum /= N;
+	}
+	printf("The answer is %d\n", Nsum);
+	return 0;
+}
