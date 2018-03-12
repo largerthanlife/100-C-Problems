@@ -327,7 +327,7 @@ int main()
 	return 0;
 
 }
-*/
+
 
 //1.10 数制转换
 //描述：给定一个 M 进制的数 x，实现对 x 向任意的一个非 M 进制的数的转换。
@@ -370,3 +370,6 @@ int main()
 	printf("The answer is %d\n", Nsum);
 	return 0;
 }
+*/
+
+//answer
