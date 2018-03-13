@@ -370,6 +370,122 @@ int main()
 	printf("The answer is %d\n", Nsum);
 	return 0;
 }
+
+//answer version
+
 */
 
-//answer
+//Chapter 2 趣味数学问题
+//2.1 个人所得税问题
+//描述：编写一个计算个人所得税的程序，要求输入收入金额后，能够输出应缴的个人所得税，其征收办法为：
+//起征点为 3500 元
+//不超过 1500 元的部分， 征收 3%
+//超过 1500 ~ 4500 元的部分，征收 10%
+//超过 4500 ~ 9000 元的部分，征收 20%
+//超过 9000 ~ 35000 元的部分，征收 25%
+//超过 35000 ~ 55000 元的部分，征收 30%
+//超过 55000 ~ 80000 元的部分，征收 35%
+//超过 80000 元以上的，征收 45%
+// 苛政猛于虎哉
+// 一开始居然把税的计算方法搞错了
+// 君子爱财 取之有道
+#include <stdio.h>
+#define LEVEL0 3500
+#define Level0 0
+#define RATE0 0.03
+
+#define LEVEL1 1500
+#define Level1 1
+#define RATE1  0.1
+
+#define LEVEL2 4500
+#define Level2 2
+#define RATE2  0.2
+
+#define LEVEL3 9000
+#define Level3 3
+#define RATE3  0.25
+
+#define LEVEL4 35000
+#define Level4 4
+#define RATE4  0.3
+
+#define LEVEL5 55000
+#define Level5 5
+#define RATE5  0.35
+
+#define LEVEL6 80000
+#define Level6 6
+#define RATE6  0.45
+
+#define sumlevel1  (LEVEL1 * RATE0)
+#define sumlevel2  (sumlevel1 + (LEVEL2 - LEVEL1) * RATE1)
+#define sumlevel3  (sumlevel2 + (LEVEL3 - LEVEL2) * RATE2)
+#define sumlevel4  (sumlevel3 + (LEVEL4 - LEVEL3) * RATE3)
+#define sumlevel5  (sumlevel4 + (LEVEL5 - LEVEL4) * RATE4)
+#define sumlevel6  (sumlevel5 + (LEVEL6 - LEVEL5) * RATE5)
+
+int whichlevel(float income)
+{
+	if(income < 0)
+		return -1;
+	else if(income < LEVEL0)
+		return Level0;
+	else if(income < LEVEL2)
+		return Level1;
+	else if(income < LEVEL3)
+		return Level2;
+	else if(income < LEVEL4)
+		return Level3;
+	else if(income < LEVEL5)
+		return Level4;
+	else if(income < LEVEL6)
+		return Level5;
+	else
+		return Level6;
+}
+
+int main()
+{
+	float income = 0;
+	float tax = 0;
+
+	while(1)
+	{
+		printf("Please input your income:");
+		scanf("%f", &income);
+
+		if(income > LEVEL0)
+		{
+			income -= 3500;
+			switch (whichlevel(income))
+			{
+				case Level1: tax = sumlevel1 + (income - LEVEL1) * RATE1;
+					break;
+				case Level2: tax = sumlevel2 + (income - LEVEL2 - LEVEL1) * RATE2;
+					break;
+				case Level3: tax = sumlevel3 + (income - LEVEL3 - LEVEL2 - LEVEL1) * RATE3;
+					break;
+				case Level4: tax = sumlevel4 + (income - LEVEL4 - LEVEL3 - LEVEL2 - LEVEL1) * RATE4;
+					break;
+				case Level5: tax = sumlevel5 + (income - LEVEL5 - LEVEL4 - LEVEL3 - LEVEL2 - LEVEL1) * RATE5;
+					break;
+				case Level6: tax = sumlevel6 + (income - LEVEL6 - LEVEL5 - LEVEL4 - LEVEL3 - LEVEL2 - LEVEL1) * RATE6;
+					break;
+			}
+		}
+
+		printf("You should pay %f tax according to your income.\n", tax);
+	}
+	return 0;
+}
+
+
+//2.2 存钱问题
+//描述：假设银行整存整取存款不同期限的月息利率为：
+//0.63% 1年
+//0.66% 2年
+//0.69% 3年
+//0.75% 5年
+//0.84% 8年
+//现已知某人手上有 2000 元，要求通过计算选择出一种存钱方案，使得存入 20 年后利息最多，假定银行对超出存款期限的那部分时间不付利息
