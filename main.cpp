@@ -222,6 +222,8 @@ int main()
 	printf("\n");
 	return 0;
 }
+
+
 // answer
 #include <stdio.h>
 #define N 15
@@ -535,4 +537,47 @@ int main()
 //描述：10个小孩围成一圈分糖果，老师分别分给 1 - 10号小孩  各 10, 2, 8, 22, 16, 4, 10, 6, 14, 20.
 //然后所有的小孩同时将手中的糖分一半给右边的小孩，糖块数为奇数的人可向老师要一块
 //问经过几次后大家手中的糖果一样多吗 各有多少块？
-//还不知道会不会一样多 
+//还不知道会不会一样多
+//largerthanlife
+//17/03/2018
+#include<stdio.h>
+#define N 10
+
+bool AllEqual(int a[], int n)
+{
+	for(int i = 1; i < n; i++)
+	{
+		if(a[i] != a[0])
+			return false;
+	}
+	return true;
+}
+int main()
+{
+	int children[N] = {10, 2, 8, 22, 16, 4, 10, 6, 14, 20};
+	int temp[N] = {0};
+	int right;
+	while( !AllEqual(children, N))
+	{
+		for(int i = 0; i < N; i++)
+		{
+			if(i == N-1)
+				right = 0;
+			else
+				right = i + 1;
+				
+			children[i] /= 2;
+			temp[right] = children[i];
+		}
+		for(int i =0; i < N; i++)
+		{
+			children[i] += temp[i];
+			if(children[i] % 2 == 1)
+				children[i] += 1;
+		}
+	}	
+	for(int i = 0; i < N; i++)
+		printf("%d ", children[i]);
+	printf("\n");
+	return 0;
+}
