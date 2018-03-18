@@ -531,7 +531,7 @@ int main()
 				printf("从 1 -》 8：%d, %d, %d, %d, %d\n本息合计共 %f 元", y1, y2, y3, y5, y8, result);
 	return 0;
 }
-*/
+
 
 //2.3 分糖果
 //描述：10个小孩围成一圈分糖果，老师分别分给 1 - 10号小孩  各 10, 2, 8, 22, 16, 4, 10, 6, 14, 20.
@@ -581,3 +581,35 @@ int main()
 	printf("\n");
 	return 0;
 }
+
+
+//2.4 三色球问题
+//描述：一个口袋中放有12个球，已知其中三个是红的，三个是白的，六个是黑的，现从中任意取八个
+//问有多少种可能的搭配？
+//largerthanlife
+//18/03/2018
+#include<stdio.h>
+#define REDNUM 3
+#define WHITENUM 3
+#define BLACKNUM 6
+int main()
+{
+	for(int red = 0; red <= REDNUM ; red++)
+		for(int white = 0; white <= WHITENUM ; white++)
+			for(int black = 0; black <= BLACKNUM ; black++)
+			{
+				if(red + white + black == 8)
+					printf("%d %d %d\n", red, white, black);
+			}
+	return 0;
+}
+*/
+
+//2.5出售金鱼
+//描述：小明将养的一缸金鱼分 5 次出售
+//  第一次卖出全部的一半加1/2条
+//  第二次卖出余下的三分之一加1/3条
+//  第三次卖出余下的四分之一加1/4条
+//  第四次卖出余下的五分之一加1/5条
+//  最后卖出剩余的11条
+//  原来有多少条
