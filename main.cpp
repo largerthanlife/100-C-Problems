@@ -603,7 +603,7 @@ int main()
 			}
 	return 0;
 }
-*/
+
 
 //2.5出售金鱼
 //描述：小明将养的一缸金鱼分 5 次出售
@@ -613,3 +613,19 @@ int main()
 //  第四次卖出余下的五分之一加1/5条
 //  最后卖出剩余的11条
 //  原来有多少条
+//largerthanlife
+//21/03/2018
+#include<iostream>
+#define N 5
+#define LEFT 11
+int main()
+{
+	int sum = LEFT;
+	for(int i = N; i > 1; i--)
+		sum = (sum + 1.0/i) * i / (i-1);
+	printf("sum = %d\n", sum);
+
+	return 0;
+}
+*/
+
