@@ -627,5 +627,36 @@ int main()
 
 	return 0;
 }
+
+
+//2.6 求车速
+//一辆以固定速度行驶的汽车，司机在上午 10 点看到里程表上的读数是一个对称数，为 95859，
+//两小时后里程表上出现了一个新的对称数，该数仍为五位数，
+//问该车的速度是多少，新的对称数是多少
+//95959?????????
+//largerthanlife
+//22/03/2018
+#include<stdio.h>
+int main()
+{
+	int num[5] = {0};
+	for(int i = 95859; i < 100000; i++)
+	{
+		num[4] = (i % 10) / 1;
+		num[3] = (i % 100) / 10;
+		num[2] = (i % 1000) / 100;
+		num[1] = (i % 10000) / 1000;
+		num[0] = (i % 100000) / 10000;
+		if(num[0] == num[4] && num[3] == num[1])
+		{
+			printf("new numer:");
+			for(int j = 0; j < 5; j++)
+				printf("%d",num[j]);
+			printf("\n");
+			printf("its speed is %f km/h\n", (i - 95859)/ 2.0);
+		}
+	}
+	return 0;
+}
 */
 
