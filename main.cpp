@@ -658,7 +658,7 @@ int main()
 	}
 	return 0;
 }
-*/
+
 
 //2.7 爱因斯坦的数学题
 //描述：爱因斯坦出了一道这样的数学题
@@ -671,12 +671,12 @@ int main()
 //largerthanlife
 //23/03/2018
 #include<stdio.h>
-#define N 500
+#define N 600
 int main()
 {
 	int sum = 0;
 	int i = 0;
-	for(sum = 0; sum < N; sum++)
+	for(sum = 1; sum < N; sum+=2) // step = 2,肯定是奇数
 		if( (sum % 2 == 1) && (sum % 3 == 2) && (sum % 5 == 4) && (sum % 6 == 5) && (sum % 7 == 0))
 		{
 			i++;
@@ -685,3 +685,35 @@ int main()
 	printf("between 1 ~ %d, %d number(s) is qualified\n", N, i);
 	return 0;
 }
+
+
+// 2.8猜牌术
+// 描述：魔术师利用一副牌中的 13 张黑桃，预先将它们排好后迭在一起，并使牌面朝下
+// 然后他对观众说 我不看牌，只要数数就可以猜到每张牌是什么，我大声数数，你们听，不信？
+// 你们就看，魔术师将最上面的那张牌数为 1 ， 把它翻过来正好是黑桃 A ，他将黑桃 A 放在桌子上
+// 然后按顺序从上到下数手中的余牌，第二次数 1 、 2，将第一张牌放在这迭牌的下面，将第二张牌翻过来，正好是黑桃 2 ，
+// 也将它放在桌子上， 第三次数 1 2 3 ，将前面两张依次放在这迭牌的下面，再翻第三张正好是黑桃 3，
+// 这样依次进行， 将 13 张牌全部翻出来， 准确无误，
+// 问魔术师手中的牌原始次序是怎样安排的？
+// WTF is this
+
+
+
+// 2.9 舍罕王的失算
+//描述：国际象棋盘 64x64格，第一格一粒，之后 2 倍增长，依次放完
+//共需多少
+//largerthanlife
+//24/03/2018
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define N 64
+int main()
+{
+	double sum = 0;
+	for(int i = 0; i < N; i++)
+		sum += pow(2,i);
+	printf("%.0lf\n", sum);
+	return 0;
+}
+*/
