@@ -717,3 +717,25 @@ int main()
 	return 0;
 }
 */
+
+//2.10 马克思手稿中的数学题
+//描述：马克思手稿中有一道趣味数学题：
+//有 30 个人，其中有男人、女人和小孩，他们在同一家饭店吃饭 总共花了50先令
+//已知每个男人需要 3 先令，女人 2 ，小孩 1,
+//请求出男人女人小孩各有几人
+//largerthanlife
+//24/03/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int numman, numwoman, numchild;
+	for(numman = 1; numman <= 17; numman ++)
+		for(numwoman = 1; numwoman <= 25; numwoman++)
+			{
+				numchild = 30 - numman - numwoman;
+				if(numman * 3 + numwoman * 2 + numchild == 50)
+					printf("man: %d\nwoman: %d\nchild: %d\n", numman, numwoman, numchild);
+			}
+	return 0;
+}
