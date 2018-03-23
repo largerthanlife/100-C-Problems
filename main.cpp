@@ -660,3 +660,28 @@ int main()
 }
 */
 
+//2.7 爱因斯坦的数学题
+//描述：爱因斯坦出了一道这样的数学题
+// 有一条长阶梯，若每步跨 2 阶，则最后剩一阶，
+// 若每步跨 3 阶，则最后剩 2 阶，
+// 若每步跨 5 阶，则最后剩 4 阶，
+// 若每步跨 6 阶，则最后剩 5 阶。
+// 只有每次跨 7 阶， 最后才正好一阶不剩
+// 请问在 1~N 内， 有多少个数能满足？
+//largerthanlife
+//23/03/2018
+#include<stdio.h>
+#define N 500
+int main()
+{
+	int sum = 0;
+	int i = 0;
+	for(sum = 0; sum < N; sum++)
+		if( (sum % 2 == 1) && (sum % 3 == 2) && (sum % 5 == 4) && (sum % 6 == 5) && (sum % 7 == 0))
+		{
+			i++;
+			printf("%d : %d\n", i, sum);
+		}
+	printf("between 1 ~ %d, %d number(s) is qualified\n", N, i);
+	return 0;
+}
