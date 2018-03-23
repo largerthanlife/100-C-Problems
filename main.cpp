@@ -716,7 +716,7 @@ int main()
 	printf("%.0lf\n", sum);
 	return 0;
 }
-*/
+
 
 //2.10 马克思手稿中的数学题
 //描述：马克思手稿中有一道趣味数学题：
@@ -737,5 +737,32 @@ int main()
 				if(numman * 3 + numwoman * 2 + numchild == 50)
 					printf("man: %d\nwoman: %d\nchild: %d\n", numman, numwoman, numchild);
 			}
+	return 0;
+}
+*/
+
+//2.11换分币
+//描述：将 5 元的人民币兑换成1 元、 5 角和 1 角的硬币，共有多少种不同的兑换方法
+//题意不清，是否至少各一张？
+//anyway it's easy
+//largerthanlife
+//24/03/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int num1yuan;
+	int num5jiao;
+	int num1jiao;
+	int count = 0;
+	for(num1yuan = 0; num1yuan <= 5; num1yuan ++)
+		for(num5jiao = 0; num5jiao <= 10; num5jiao++)
+			for(num1jiao = 0; num1jiao <= 50; num1jiao++)
+				if(num1yuan * 10 + num5jiao * 5 + num1jiao == 50)
+				{
+					count++;
+					printf("%d:\n1 yuan: %d\n5 jiao: %d\n1 jiao: %d\n", count, num1yuan, num5jiao, num1jiao);
+
+				}
 	return 0;
 }
