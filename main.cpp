@@ -824,4 +824,73 @@ bool find(int num, int test)
 			sum += i;
 	return sum == test;
 }
+
+
+//3.3自守数
+//描述：自守数是指一个数的平方的尾数等于该数自身的自然数
+//如： 5^2 = 25, 25^2 = 625, 76^2 = 5776, 9376^2 = 87909376
+// 求 100000 以内的自守数
+//largerthanlife
+//30/03/2018
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define MAX 100000
+int main()
+{
+	bool istail(long, int);
+	for(int i = 0; i < MAX; i++)
+		if(istail(i*i, i))
+			printf("%d is qualified\n", i);
+	return 0;
+}
+
+int count(long num)
+{
+	int i;
+	for(i = 1; num; i++)
+		num /= pow(10, i);
+	return i;
+}
+
+bool istail(long num, int find)
+{
+	int bit = count(num);
+	for(; bit; bit--, num %= (int)(pow(10,bit)))
+		if(num == find)
+			return true;
+	return false;
+}
+
+
+//answer version
+//largerthanlife
+//30/03/2018
+// 6哦朋友
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	long mul, number, k, a, b;
+	for(number = 0; number < 100000; number++)
+	{
+		for(mul=number, k = 1;(mul/=10)>0; k*=10);
+
+		a = k*10;
+		mul = 0;
+		b = 10;
+		while(k > 0)
+		{
+			mul = (mul+(number%(k*10))*(number%b - number%(b/10))) % a;
+			k /= 10;
+			b *= 10;
+		}
+		if(number == mul)
+			printf("%ld	", number);
+	}
+	return 0;
+}
 */
+
+//3.4回文数
+//打印所有不超过 n（ n<256 ），的其平方具有对称性质的数
