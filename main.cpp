@@ -795,5 +795,33 @@ bool find(int num)
 			sum += i;
 	return sum == num;
 }
-*/
 
+
+//3.2亲密数
+//描述：如果整数 A 的全部因子（包括1，不包括 A 本身），之和等于 B，且 整数 B 的全部因子之和等于 A ，则将 A B 称为亲密数，求 3000 以内的全部亲密数
+//会有这种事啊
+//largerthanlife
+//30/03/2018
+//警告：这程序要跑将近一分钟
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 3000
+int main()
+{
+	bool find(int, int);
+	for(int i = 1; i < MAX; i++)
+		for(int j = 1; j < MAX; j++)
+			if(find(i, j) && find(j, i))
+				printf("%d and %d is qualified\n", i, j);
+	return 0;
+}
+
+bool find(int num, int test)
+{
+	int sum = 1; // 1 肯定是因数之一
+	for(int i = 2; i < num/2 + 1; i++) // i 直接从2开始 效率高啊  上限到 num 的一半就行
+		if(num % i == 0)
+			sum += i;
+	return sum == test;
+}
+*/
