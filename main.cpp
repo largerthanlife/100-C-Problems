@@ -739,7 +739,7 @@ int main()
 			}
 	return 0;
 }
-*/
+
 
 //2.11换分币
 //描述：将 5 元的人民币兑换成1 元、 5 角和 1 角的硬币，共有多少种不同的兑换方法
@@ -747,7 +747,7 @@ int main()
 //anyway it's easy
 //largerthanlife
 //24/03/2018
-#include <stdio.h>
+ #include <stdio.h>
 #include <stdlib.h>
 int main()
 {
@@ -766,3 +766,34 @@ int main()
 				}
 	return 0;
 }
+
+
+//3.1完数
+//描述：求某一范围内完数的个数
+//如果一个数等于它的因子之和， 则称该数为“完数”
+//范围是什么
+//largerthanlife
+//30/03/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	bool find(int);
+	int num;
+	scanf("%d", &num);
+	for(int i = 0; i <= num; i++)
+		if(find(i))
+			printf("%d is qualified\n", i);
+	return 0;
+}
+
+bool find(int num)
+{
+	int sum = 1; // 1 肯定是因数之一
+	for(int i = 2; i < num/2 + 1; i++) // i 直接从2开始 效率高啊  上限到 num 的一半就行
+		if(num % i == 0)
+			sum += i;
+	return sum == num;
+}
+*/
+
