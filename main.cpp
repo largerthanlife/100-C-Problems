@@ -940,7 +940,7 @@ bool judge(int *s , int length)
 		}
 	return true;
 }
-*/
+
 
 //3.５　水仙花数
 //描述：输出所有的水仙花数， 即指一个三位数 其各位数字的立方和等于该数本身
@@ -960,6 +960,32 @@ int main()
 		int c = num;
 		if(a*a*a + b*b*b + c*c*c == i)
 			printf("%d is qualified\n", i);
+	}
+	return 0;
+}
+*/
+
+//3.6 阿姆斯特朗数
+//描述：如果一个整数等于其各个数字的立方和，则为阿姆斯特朗数
+//求 1000 以内的 所有阿姆斯特朗数
+//largerthanlife
+//30/03/2018
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define MAX 1000
+int main()
+{
+	int sum = 0;
+	for(int i = 0; i < 1000; i++)
+	{
+		for(int num = i; num; num /= 10)
+		{
+			sum += pow(num%10, 3);
+		}
+		if(sum == i)
+			printf("%d is qualified\n", i);
+		sum = 0;
 	}
 	return 0;
 }
