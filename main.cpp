@@ -890,7 +890,76 @@ int main()
 	}
 	return 0;
 }
-*/
+
 
 //3.4回文数
 //打印所有不超过 n（ n<256 ），的其平方具有对称性质的数
+//largerthanlife
+//30/03/2018
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define MAX 256
+int main()
+{
+	bool find(int);
+	for(int i = 1; i < MAX; i++)
+		if(find(i*i))
+			printf("%d is qualified(%d * %d = %d)\n", i, i, i, i*i);
+	return 0;
+}
+
+bool find(int num)
+{
+	bool countbit(int);
+	bool judge(int*, int length);
+	
+	int bit = countbit(num);
+	//int *s = (int*)malloc(bit);
+	int s[6] = {0};
+	for(int i = bit - 1; i >= 0; num %= (int)pow(10, i), i--)
+	{
+		s[i] = num / (int)pow(10, i);
+	}
+	return judge(s, bit);
+}
+
+int countbit(int num)
+{
+	int i = 1;
+	for(; num / 10; i++, num /= 10);
+	return i;
+}
+
+bool judge(int *s , int length)
+{
+	for(int i = 0; i < length/2; i++)
+		if(s[i] != s[length -1 -i])
+		{
+			return false;
+		}
+	return true;
+}
+*/
+
+//3.５　水仙花数
+//描述：输出所有的水仙花数， 即指一个三位数 其各位数字的立方和等于该数本身
+//largerthanlife
+//30/03/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	for(int i = 100; i < 999; i++)
+	{
+		int num = i;
+		int a = num/100;
+		num %= 100;
+		int b = num/10;
+		num %= 10;
+		int c = num;
+		if(a*a*a + b*b*b + c*c*c == i)
+			printf("%d is qualified\n", i);
+	}
+	return 0;
+}
