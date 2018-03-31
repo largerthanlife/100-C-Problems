@@ -963,7 +963,7 @@ int main()
 	}
 	return 0;
 }
-*/
+
 
 //3.6 阿姆斯特朗数
 //描述：如果一个整数等于其各个数字的立方和，则为阿姆斯特朗数
@@ -989,3 +989,41 @@ int main()
 	}
 	return 0;
 }
+
+
+//3.7 高次方数的尾数
+//描述：求 13 的 13次方的最后三位数
+//666
+//largerthanlife
+//01/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define NUM 13
+#define N 13
+#define TAIL 3
+int main()
+{
+	int result = 1;
+	for(int i = 0; i < N; i++)
+		result = result * NUM % (int)pow(10, TAIL);
+	printf("%d\n", result);
+	return 0;
+}
+
+//answer version
+//largerthanlife
+//01/04/2018
+//#include <stdio.h>
+//#include <stdlib.h>
+//int main()
+//{
+//	int i, x, y, last = 1;
+//	printf("Input x and y:\n");
+//	scanf("%d %d", &x, &y);
+//	for(int i = 1; i <= y; i++)
+//		last = last * x % 1000;
+//	printf("The last three digit is:%d", last);
+//	return 0;
+//}
+*/
