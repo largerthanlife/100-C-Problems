@@ -1026,7 +1026,7 @@ int main()
 //	printf("The last three digit is:%d", last);
 //	return 0;
 //}
-*/
+
 
 
 //3.8 黑洞数
@@ -1034,6 +1034,7 @@ int main()
 //例如 207，： 702 - 027 = 675 …… 963 - 369 = 594 954 - 459 = 495
 //再用 208 算一次， 也停止到 495，所以 495 是三位黑洞数
 //有点不会做诶
+//掉以轻心了
 //answer version
 //largerthanlife
 //05/04/2018
@@ -1114,5 +1115,28 @@ int main()
 			break;
 		}
 	}
+	return 0;
+}
+*/
+
+//3.9勾股数
+//描述：求100以内所有的勾股数
+//所谓勾股数，是指能够构成直角三角形三条边的三个正整数
+
+
+//3.10不重复的3位数
+//描述：用1、 2、 3、 4共4个数字能组成多少个互不相同且无重复数字的三位数，分别是多少
+//largerthanlife
+//05/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	for(int i = 1; i <= 4;i++)
+		for(int j = 1; j <=4; j++)
+			for(int k = 1; k <= 4; k++)
+				if(i!=j && i!=k && j!=k)
+					printf("%d%d%d\n", i, j, k);
+
 	return 0;
 }
