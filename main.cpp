@@ -1152,4 +1152,45 @@ int main()
 
 	return 0;
 }
+
+
+
+//4.1最大公约数
+//描述：求任意两个正整数的最大公约数(GCD)
+//largerthanlife
+//05/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int a, b;
+	int temp;
+	int t;
+	while(1)
+{
+	printf("input a and b:");
+	scanf("%d %d", &a, &b);
+	if(a <= b)
+	{
+		temp = a;
+		a = b;
+		b = temp;
+	}
+	while(a != b)
+	{
+		temp = a - b;
+		if(b <= temp)
+		{
+			t = b;
+			b = temp;
+			temp = t;
+		}
+		a = b;
+		b = temp;
+	}
+
+	printf("its %d\n", a);
+}
+	return 0;
+}
 */
