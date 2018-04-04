@@ -1193,4 +1193,81 @@ int main()
 }
 	return 0;
 }
+
+
+//4.2 最小公倍数
+//描述：求任意两个正整数的最小公倍数(LCM)
+//largerthanlife
+//05/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+		int a, b;
+		int n,m;
+		int temp;
+		int t;
+		while(1)
+		{
+			printf("input a and b:");
+			scanf("%d %d", &a, &b);
+			n = a;
+			m = b;
+			if(a <= b)
+			{
+				temp = a;
+				a = b;
+				b = temp;
+			}
+			while(a != b)
+			{
+				temp = a - b;
+				if(b <= temp)
+				{
+					t = b;
+					b = temp;
+					temp = t;
+				}
+				a = b;
+				b = temp;
+		}
+
+		printf("its %d\n", n*m/a);
+	}
+	return 0;
+}
+
+
+//4.3歌星大奖赛
+//描述：在歌星大奖赛中，有 10 个评委为参赛的选手打分，分数为 1~100 分，选手最后得分为去掉一个最高分和一个最低分后其余8个分数的平均值，请编写一个程序实现
+//largerthanlife
+//05/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+#define N 10
+int main()
+{
+	float scores[N];
+	float temp;
+	for(int i = 0; i < N; i++)
+		scanf("%f", &scores[i]);
+	getchar();
+	for(int i = 0; i < N; i++)
+		for(int j = i; j < N; j++)
+			if(scores[j] < scores[i])
+			{
+				temp = scores[j];
+				scores[j] = scores[i];
+				scores[i] = temp;
+			}
+	float sum = 0;
+	for(int i = 1; i < N-1; i++)
+		sum += scores[i];
+	printf("average = %f\n", sum/(N - 2));
+
+	return 0;
+}
 */
+
+//4.4将真分数分解为埃及分数
+//描述：先输入一个真分数，请讲该分数分解为埃及分数（分子为 1 的分数）
