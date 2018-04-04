@@ -1117,12 +1117,24 @@ int main()
 	}
 	return 0;
 }
-*/
+
 
 //3.9勾股数
 //描述：求100以内所有的勾股数
 //所谓勾股数，是指能够构成直角三角形三条边的三个正整数
-
+//largerthanlife
+//05/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	for(int i = 1; i <= 100;i++)
+		for(int j = 1; j <= 100; j++)
+			for(int k = 1; k <= 100; k++)
+				if(i*i + j*j == k*k)
+					printf("%d %d %d\n", i, j, k); 
+	return 0;
+}
 
 //3.10不重复的3位数
 //描述：用1、 2、 3、 4共4个数字能组成多少个互不相同且无重复数字的三位数，分别是多少
@@ -1140,3 +1152,4 @@ int main()
 
 	return 0;
 }
+*/
