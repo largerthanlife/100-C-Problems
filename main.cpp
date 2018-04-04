@@ -1027,3 +1027,92 @@ int main()
 //	return 0;
 //}
 */
+
+
+//3.8 黑洞数
+//描述：黑洞数又称陷阱数，任何一个数字不全相同的整数， 经有限次重排求差的操作，总会得到某一个或某一些数，这些数即为黑洞数，重排操作是将组成一个数的各位数字重排得到的最大数减去最小数
+//例如 207，： 702 - 027 = 675 …… 963 - 369 = 594 954 - 459 = 495
+//再用 208 算一次， 也停止到 495，所以 495 是三位黑洞数
+//有点不会做诶
+//answer version
+//largerthanlife
+//05/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+
+int maxof3(int a, int b, int c)
+{
+	int t;
+	if(a<b)
+	{
+		t = a;
+		a = b;
+		b = t;
+	}
+	if(a<c)
+	{
+		t = a;
+		a = c;
+		c = t;
+	}
+	if(b<c)
+	{
+		t = b;
+		b = c;
+		c = t;
+	}
+	return a*100 + b * 10 + c;
+}
+
+int minof3(int a, int b, int c)
+{
+	int t;
+	if(a<b)
+	{
+		t = a;
+		a = b;
+		b = t;
+	}
+	if(a<c)
+	{
+		t = a;
+		a = c;
+		c = t;
+	}
+	if(b<c)
+	{
+		t = b;
+		b = c;
+		c = t;
+	}
+	return c*100 + b * 10 + a;
+}
+int main()
+{
+	int i, k;
+	int hun, oct, data, max, min, j, h;
+	printf("enter a three-bits-number:");
+	scanf("%d", &i);
+	hun = i/100;
+	oct = i%100/10;
+	data = i%10;
+	max = maxof3(hun, oct, data);
+	min = minof3(hun, oct, data);
+	j = max-min;
+	for(k = 0;;k++)
+	{
+		h = j;
+		hun = j/100;
+		oct = j%100/10;
+		data = j%10;
+		max = maxof3(hun, oct, data);
+		min = minof3(hun, oct, data);
+		j = max - min;
+		if(j == h)
+		{
+			printf("%d\n",j);
+			break;
+		}
+	}
+	return 0;
+}
