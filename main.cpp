@@ -1268,7 +1268,7 @@ int main()
 
 	return 0;
 }
-*/
+
 
 //4.4将真分数分解为埃及分数
 //描述：先输入一个真分数，请讲该分数分解为埃及分数（分子为 1 的分数）
@@ -1307,3 +1307,46 @@ int main()
 	}
 	return 0;
 }
+
+
+//4.5列出真分数序列
+//描述：按递增顺序依次列出所有分母为40，分子小于40的最简分数
+//largerthanlife
+//05/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int a, b, temp, t;
+	for(int i = 1; i < 40; i++)
+	{
+		a = i;
+		b = 40;
+		if(a <= b)
+		{
+			temp = a;
+			a = b;
+			b = temp;
+		}
+		while(a != b)
+		{
+			temp = a - b;
+			if(b <= temp)
+			{
+				t = b;
+				b = temp;
+				temp = t;
+			}
+			a = b;
+			b = temp;
+		}
+		if(a == 1 )
+			printf("%d/40\n", i);
+	}
+	return 0;
+}
+*/
+
+//4.6多项式之和
+//描述：计算下列多项式的值
+// s = 1 + 1/(1*2) + 1/(1*2*3)+ ... + 1/(1*2*3*...n)
