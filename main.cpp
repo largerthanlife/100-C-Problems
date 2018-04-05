@@ -1345,7 +1345,6 @@ int main()
 	}
 	return 0;
 }
-*/
 
 //4.6多项式之和
 //描述：计算下列多项式的值
@@ -1371,3 +1370,53 @@ int main()
 
 	return 0;
 }
+
+
+//4.7分数比较
+//比较两个分数的大小
+//largerthanlife
+//05/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int n1, a;
+	int n2, b;
+	int temp,t;
+	printf("first :");
+	scanf("%d/%d", &n1, &a);
+	printf("second:");
+	scanf("%d/%d", &n2, &b);
+
+			int n = a;
+			int m = b;
+			if(a <= b)
+			{
+				temp = a;
+				a = b;
+				b = temp;
+			}
+			while(a != b)
+			{
+				temp = a - b;
+				if(b <= temp)
+				{
+					t = b;
+					b = temp;
+					temp = t;
+				}
+				a = b;
+				b = temp;
+			}
+	if(n1*(m/a) > n2*(n/a))
+		printf("first is lager\n");
+	else if(n1*(m/a) < n2*(n/a))
+		printf("second is lager\n");
+	else
+		printf("ther are equal\n");
+	return 0;
+}
+*/
+
+//4.8计算分数精确值
+//使用数组精确计算 M/N (0<M<N<=100) 的值，加入 M/N 是无限循环小数，则计算并输出它的第一循环节，同时要求输出循环节的起止位置
