@@ -1416,7 +1416,47 @@ int main()
 		printf("ther are equal\n");
 	return 0;
 }
-*/
+
 
 //4.8计算分数精确值
 //使用数组精确计算 M/N (0<M<N<=100) 的值，加入 M/N 是无限循环小数，则计算并输出它的第一循环节，同时要求输出循环节的起止位置
+//不会做
+//answer vesion
+//largerthanlife
+//05/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int m, n, i, j;
+	int remainder[101] = {0},quotient[101] = {0};
+	scanf("%d/%d", &m, &n);
+	printf("0.");
+	for(i = 1; i <= 100; i++)
+	{
+		remainder[m] = i;   //m：得到的余数， ramainder[m] ：该余数对应的商的位数
+		m *= 10;
+		quotient[i] = m/n;
+		m = m % n;
+		if(m == 0)
+		{
+			for(j = 1; j <= i; j++)
+				printf("%d", quotient[j]);
+				break;
+		}
+		if(remainder[m] != 0)
+		{
+			for(j = 1; j <= i; j++)
+				printf("%d", quotient[j]);
+			printf("\n\tand it is a infinite cyclic fraction from %d\n", remainder[m]);
+			printf("\tdigit to %d digit after decimal point.\n", i);
+			break;
+		}
+	}
+
+	return 0;
+}
+*/
+
+//5.1素数
+//求给定范围 start~end 之间的所有素数
