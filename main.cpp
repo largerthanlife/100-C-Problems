@@ -1247,6 +1247,7 @@ int main()
 #define N 10
 int main()
 {
+
 	float scores[N];
 	float temp;
 	for(int i = 0; i < N; i++)
@@ -1271,3 +1272,38 @@ int main()
 
 //4.4将真分数分解为埃及分数
 //描述：先输入一个真分数，请讲该分数分解为埃及分数（分子为 1 的分数）
+//answer version
+//largerthanlife
+//05/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	long int a, b, c;
+	scanf("%ld/%ld", &a, &b);
+	while(1)
+	{
+		if(b%a)
+			c = b/a+1;
+		else
+		{
+			c=b/a;
+			a=1;
+		}
+		if(a==1)
+		{
+			printf("1/%ld\n", c);
+			break;
+		}
+		else
+			printf("1/%ld + ", c);
+		a = a*c - b;
+		b = b *c;
+		if(a == 3 && b%2 == 0)
+		{
+			printf("1/%ld + 1/%ld\n", b/2, b);
+			break;
+		}
+	}
+	return 0;
+}
