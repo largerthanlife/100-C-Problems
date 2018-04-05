@@ -1350,3 +1350,24 @@ int main()
 //4.6多项式之和
 //描述：计算下列多项式的值
 // s = 1 + 1/(1*2) + 1/(1*2*3)+ ... + 1/(1*2*3*...n)
+//largerthanlife
+//05/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	float sum = 0;
+	float temp = 1;
+	for(int i = 1; i <= n; i++)
+	{
+		for(int j = 1; j <= i; j++)
+			temp *= j;
+		sum += 1/temp;
+		temp = 1;
+	}
+	printf("%f\n", sum);
+
+	return 0;
+}
