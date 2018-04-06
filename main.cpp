@@ -1663,3 +1663,32 @@ int main()
 }
 */
 
+//5.7 梅森素数
+//描述：梅森数指的是形如 2^n - 1的正整数， 其中 n 是素数，如果一个梅森数是素数，则称其为梅森素数
+//求出指数 n < 20 的所有梅森素数
+//largerthanlife
+//07/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+bool isprime(long num)
+{
+	for(int i = 2; i <= num/2; i++)
+		if(num % i == 0)
+			return false;
+	return true;
+}
+int main()
+{
+	long num = 0;
+	for(int i = 0; i < 20; i++)
+	{
+			num = pow(2, i) - 1;
+			if(isprime(i) && isprime(num))
+				printf("%ld is qualified\n", num);
+	}
+	return 0;
+}
+
+
+//6.1
