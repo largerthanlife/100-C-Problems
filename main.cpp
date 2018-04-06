@@ -1537,4 +1537,31 @@ int main()
 					printf("%d + %d = %d\n", a, b, i);
 	return 0;
 }
+
+
+//5.3要发就发
+//描述：1898-要发就发 请将不超过1993的所有素数从小到大排成第一行，第二行上的每个数都等于它上面相邻两个素数之差
+//编程求出：第二行中是否存在若干个连续的整数它们的和恰好为 1898？如果存在的话，又有几种情况？
+//你直接问 1-(1993-1898) 和 1898-1993 有没有两个素数的差是1898就好了
+//largerthanlife
+//06/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+bool isprime(int num)
+{
+	for(int i = 2; i <= num/2; i++)
+		if(num % i == 0)
+			return false;
+	return true;
+}
+int main()
+{
+	for(int i = 0; i <= 1993-1898; i++)
+		if(isprime(i) && isprime(i+1898))
+			printf("%d is quallified\n", i);
+	
+	return 0;
+}
 */
+
+//5.4
