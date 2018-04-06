@@ -1562,7 +1562,7 @@ int main()
 	
 	return 0;
 }
-*/
+
 
 //5.4 可逆素数
 //描述：请从小到大输出所有 4 位数的可逆素数
@@ -1597,3 +1597,47 @@ int main()
 
 	return 0;
 }
+
+
+//5.5 回文素数
+//描述：回文 且 素数 ， 1000以内
+//largerthanlife
+//07/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define N 1000
+bool isprime(int num)
+{
+	for(int i = 2; i <= num/2; i++)
+		if(num % i == 0)
+			return false;
+	return true;
+}
+
+int bit(int num)
+{
+	int i= 0;
+	while(num/(int)pow(10,  ++i));
+	return i;
+}
+
+int main()
+{
+	int temp[4];
+	for(int i = 0; i < N; i++)
+	{
+		int num = i, j;
+		int length =bit(i);
+		for(j = 0; j < length; j++, num /= 10)
+			temp[j] = num%10;
+		for(j = 0; j <= length/2; j++)
+			if(temp[j] != temp[length -1 - j])
+				break;
+		if(j == length/2 + 1  && isprime(i))
+			printf("%d is qualified\n", i);
+	}
+	return 0;
+}
+*/
+
