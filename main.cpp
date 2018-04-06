@@ -1639,5 +1639,27 @@ int main()
 	}
 	return 0;
 }
+
+
+//5.6 孪生素数
+//描述： 间隔为 2 的两个相邻素数， 3~1000以内
+//largerthanlife
+//07/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+bool isprime(int num)
+{
+	for(int i = 2; i <= num/2; i++)
+		if(num % i == 0)
+			return false;
+	return true;
+}
+int main()
+{
+	for(int i = 3; i <= 1000; i++)
+		if(isprime(i) && isprime(i+2))
+			printf("(%d , %d)is qualified\n", i, i+2);
+	return 0;
+}
 */
 
