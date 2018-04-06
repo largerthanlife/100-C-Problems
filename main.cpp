@@ -1456,7 +1456,85 @@ int main()
 
 	return 0;
 }
-*/
+
 
 //5.1素数
 //求给定范围 start~end 之间的所有素数
+//largerthanlife
+//06/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	bool isprime(int);
+	int start, end;
+	scanf("%d %d", &start, &end);
+	for(int num = start; num <= end; num++)
+		if(isprime(num))
+			printf("%d is prime\n", num);
+	return 0;
+}
+
+bool isprime(int num)
+{
+	for(int i = 2; i <= num/2; i++)
+		if(num % i == 0)
+			return false;
+	return true;
+}
+
+//扩展上题 找出最小的连续10个合数
+//largerthanlife
+//06/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+#define N 10
+int main()
+{
+	bool isprime(int);
+	int flag = 1, i, j;
+	for(i = 1; flag ; i++)
+	{
+		for(j = i, flag = N; j < i + N; j++)
+			if(!isprime(j))
+				flag--;
+	}
+	printf("%d - %d\n", i, i+10);
+	return 0;
+}
+
+bool isprime(int num)
+{
+	for(int i = 2; i <= num/2; i++)
+		if(num % i == 0)
+			return false;
+	return true;
+}
+
+
+//5.2 哥德巴赫猜想
+//描述： 验证：2000 以内的不小于 4 的正偶数都能够分解为两个素数之和
+//largerthanlife
+//06/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+#define N 2000
+bool isprime(int num)
+{
+	for(int i = 2; i <= num/2; i++)
+		if(num % i == 0)
+			return false;
+	return true;
+}
+
+int main()
+{
+	int a, b;
+	for(int i = 4; i < N; i+=2)
+		for(a = 1; a < i; a++)
+			for(b = 1; b < i; b++)
+				if(isprime(a) && isprime(b) && (a+b)==i)
+					printf("%d + %d = %d\n", a, b, i);
+	return 0;
+}
+*/
