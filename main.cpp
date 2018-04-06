@@ -1564,4 +1564,36 @@ int main()
 }
 */
 
-//5.4
+//5.4 可逆素数
+//描述：请从小到大输出所有 4 位数的可逆素数
+//可逆素数， 一个素数将其各位数字的顺序倒过来构成的反序数也是素数
+//largerthanlife
+//06/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+bool isprime(int num)
+{
+	for(int i = 2; i <= num/2; i++)
+		if(num % i == 0)
+			return false;
+	return true;
+}
+int main()
+{
+	int temp[4] = {0};
+	int num = 0;
+	for(int i = 1000; i < 10000; i++)
+	{
+		num = 0;
+		temp[0] = i % 10;
+		temp[1] = (i/10) % 10;
+		temp[2] = (i/100) % 10;
+		temp[3] = i/1000;
+		num = temp[0] * 1000 + temp[1] * 100 + temp[2] * 10 + temp[3];
+		//printf("%d and %d\n", i, num);
+		if(isprime(i) && isprime(num))
+			printf("%d is qualified\n", i);
+	}
+
+	return 0;
+}
