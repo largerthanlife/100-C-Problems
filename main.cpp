@@ -1661,7 +1661,7 @@ int main()
 			printf("(%d , %d)is qualified\n", i, i+2);
 	return 0;
 }
-*/
+
 
 //5.7 梅森素数
 //描述：梅森数指的是形如 2^n - 1的正整数， 其中 n 是素数，如果一个梅森数是素数，则称其为梅森素数
@@ -1691,4 +1691,58 @@ int main()
 }
 
 
-//6.1
+//6.1 谁家孩子跑的最慢
+//描述：假设有张王李三家，每家都有三个孩子，某一天，这三家的9个孩子一起比赛短跑
+//规定不考虑年龄大小，第一名得 9 分， 第二名 8 分，以此类推
+//结束后统计分数发现三家孩子的总分是相同的，限定这9个孩子不存在并列的情况，且同一家的孩子不会获得相连的名次
+//现已知第一名是李家的孩子， 第二名是王家的孩子， 编程求出最后一名是哪家的孩子
+//mmp这是要怎样 浪费时间
+//largerthanlife
+//08/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+	bool flag = true;
+	int num[9] = {9, 0, 0, 8, 0, 0, 0, 0, 0};
+	for(num[1] = 1; num[1] < 8; num[1]++,flag = true)
+		for(num[2] = 1; num[2] < 8 && flag; num[2]++)
+			for(num[4] = 1; num[4]< 8 && flag;num[4]++)
+				for(num[5] = 1; num[5] < 8 && flag ; num[5]++)
+					for(num[6] = 1; num[6] < 8 && flag ; num[6]++)
+						for(num[7] = 1; num[7] < 8 && flag ; num[7]++)
+							for(num[8] = 1; num[8] < 8 && flag ; num[8]++)
+								if( abs(num[0]-num[1]) > 1 && abs(num[0] - num[2]) > 1 && abs(num[1]-num[2]) > 1
+								&& abs(num[3]- num[4]) > 1 && abs(num[3] - num[5]) > 1 && abs(num[4] - num[5]) > 1
+								&& abs(num[6]- num[7])  > 1 && abs(num[6] - num[8]) > 1 && abs(num[7] - num[8]) > 1
+								&& (num[0]+num[1]+num[2]) == (num[3]+num[4]+num[5])  && (num[0] + num[1] + num[2]) == (num[6]+num[7]+num[8]))
+								{
+									for(int i = 0; i < 8; i++)
+										for(int j = i+1; j < 9; j++)
+											if(num[i] == num[j])
+												flag = false;
+
+									if(flag)
+									{
+										printf("a1 = %d\ta2 = %d\ta3 = %d\nb1 = %d\tb2 = %d\tb3 = %d\nc1 = %d\tc2 = %d\tc3 = %d\n\n", num[0], num[1], num[2], num[3], num[4], num[5], num[6], num[7], num[8]);
+										flag = false;
+									}
+
+								
+								}
+	return 0;
+}
+*/
+
+//6.2 新郎和新娘
+//描述：有三对情侣结婚， 假设 3 个新郎为 A B C， 3 个新娘为X Y Z，
+// 有参加婚礼的人搞不清谁和谁结婚，所以去询问了这 6 位新人中的 3 位，得到的回答如下
+// 新郎 A 说他要和新娘 X 结婚， 新娘 X 说她的未婚夫是新郎 C ，而 C说他要和新娘 Z 结婚，
+//听到这样的回答后，提问者知道他们都是在开玩笑， 说的都是假话， 但他仍搞不清谁和谁结婚，
+//请编程求出到底哪位新郎和哪位新娘结婚
+
+
+
+//提问者编程结束后发现，婚礼结束了
+//可怕的是，他们其实说的都是真话
