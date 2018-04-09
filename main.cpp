@@ -1733,7 +1733,6 @@ int main()
 								}
 	return 0;
 }
-*/
 
 //6.2 新郎和新娘
 //描述：有三对情侣结婚， 假设 3 个新郎为 A B C， 3 个新娘为X Y Z，
@@ -1741,8 +1740,50 @@ int main()
 // 新郎 A 说他要和新娘 X 结婚， 新娘 X 说她的未婚夫是新郎 C ，而 C说他要和新娘 Z 结婚，
 //听到这样的回答后，提问者知道他们都是在开玩笑， 说的都是假话， 但他仍搞不清谁和谁结婚，
 //请编程求出到底哪位新郎和哪位新娘结婚
+//largerthanlife
+//09/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int A, B, C;
+	int X, Y, Z;
+	for(A = 0; A < 3; A++)
+		for(B = 0; B < 3;B++)
+			for(C = 0; C<3; C++)
+				for(X = 0; X < 3; X++)
+					for(Y = 0; Y < 3; Y++)
+						for(Z = 0; Z<3; Z++)
+							if(A != X && X != C && C != Z && A!=B && A!= C && X!=Y && X!=Z && X+Y+Z+A+B+C == 6)
+							{
+								printf("%d %d %d %d %d %d\n", A, B, C, X, Y, Z);
+							}
 
+	return 0;
+}
 
 
 //提问者编程结束后发现，婚礼结束了
 //可怕的是，他们其实说的都是真话
+
+
+//answer version
+#include <stdio.h>
+int main()
+{
+	char x, y, z;
+	for(x = 'A'; x <= 'C'; x++)
+		for(y = 'A'; y <= 'C'; y++)
+			for(z = 'A'; z <= 'C'; z++)
+				if(x != 'A' && x != 'C' && z != 'C' && x != y && x != z && y != z)
+				{
+					printf("新娘 X 与 新郎 %c 结婚\n", x);
+					printf("新娘 Y 与 新郎 %c 结婚\n", y);
+					printf("新娘 Z 与 新郎 %c 结婚\n", z);
+				}
+
+	return 0;
+}
+*/
+
+//6.3
