@@ -1786,4 +1786,25 @@ int main()
 }
 */
 
-//6.3
+//6.3谁在说谎
+//描述：现有张三、李四、王五三个人，张三说李四在说谎，李四说王五在说谎，王五说张三和李四两个人都在说谎
+//编程求出谁真谁假
+//largerthanlife
+//11/04/2018
+//好难哦
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int zhang, li, wang;
+	for(zhang = 0;  zhang <= 1; zhang++)
+		for(li = 0; li <= 1; li++)
+			for(wang = 0; wang <= 1; wang++)
+				if( (zhang&&!li || !zhang&&li) && (li&&!wang || !li&&wang) && (wang&&zhang == 0 && li ==0 || !zhang&&(li+wang)!= 0 ))
+				{
+					printf("Zhang is %s.\n",zhang?"True":"False");
+					printf("Li is %s.\n", li?"True":"False");
+					printf("Wang is %s.\n", wang?"True":"False");
+				}
+	return 0;
+}
