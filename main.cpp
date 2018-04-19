@@ -1784,7 +1784,7 @@ int main()
 
 	return 0;
 }
-*/
+
 
 //6.3谁在说谎
 //描述：现有张三、李四、王五三个人，张三说李四在说谎，李四说王五在说谎，王五说张三和李四两个人都在说谎
@@ -1807,4 +1807,116 @@ int main()
 					printf("Wang is %s.\n", wang?"True":"False");
 				}
 	return 0;
+}
+
+
+//6.4谁是窃贼
+//描述：警察审问 4 名窃贼嫌疑犯，现在已知，这 4 人当中仅有一名是窃贼， 还知道 4 个人中的每个人要么是诚实的，要么总是说谎
+//甲："乙没有偷，是丁偷的。"
+//乙说：“我没有偷，是丙偷的。”
+//丙说：“甲没有偷，是乙偷的。”
+//丁说：“我没有偷。”
+//请根据这 4 个人的回答判断谁是窃贼
+//largerthanlife
+//20/04/2018
+//不会 完全不会
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int num = 0;
+	int a, b, c, d;
+	int atemp, btemp, ctemp, dtemp;
+	for(a = 0,b = 0, c = 0, d = 0; a <= 1; a++, b++, c++, d++)
+	{
+		//atemp = a; btemp = b; ctemp = c; dtemp = d;
+		if(a == 0)
+		{
+			btemp = 1;
+			dtemp = 0;
+		}
+		else
+		{
+			btemp = 0;
+			dtemp = 1;
+		}
+		if(b == 0)
+		{
+			btemp = 1;
+			ctemp = 0;
+		}
+		else
+		{
+			btemp = 0;
+			ctemp = 1;
+		}
+		if(c == 0)
+		{
+			atemp = 1;
+			btemp = 0;
+		}
+		else
+		{
+			atemp = 0;
+			btemp = 1;
+		}
+		if(d == 0)
+		{
+			dtemp = 1;
+		}
+		else
+		{
+			dtemp = 0;
+		}
+		if(atemp + btemp + ctemp + dtemp == 1)
+		{
+			if(atemp)
+				printf("a is the one\n");
+			if(btemp)
+				printf("b is the one\n");
+			if(ctemp)
+				printf("c is the one\n");
+			if(dtemp)
+				printf("d is the one\n");
+			break;
+		}
+	}
+
+
+	return 0;
+}
+*/
+
+//answer version
+//依然看不懂
+#include <stdio.h>
+int main()
+{
+	int i,  A = 1, B = 0, C = 0, D = 0;
+	for(i = 1; i <= 4; i ++)
+		if(B+D == 1 && B+C == 1 && A+B == 1)  // 测试甲乙丙丁谁是窃贼，符合该条件的即为窃贼 ？？？？？？？？？？？？？？？？？？？？？？
+			break;
+		else
+		{
+			if(i == 1)
+			{
+				A = 0; B = 1;
+			}
+			if(i == 2)
+			{
+				B = 0; C = 1;
+			}
+			if(i == 3)
+			{
+				C = 0; D = 1;
+			}
+		}
+	if(i == 1)
+		printf("a is the one\n");
+	if(i == 2)
+		printf("b is the one\n");
+	if(i == 3)
+		printf("c is the one\n");
+	if(i == 4)
+		printf("d is the one\n");
 }
