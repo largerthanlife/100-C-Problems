@@ -1885,7 +1885,7 @@ int main()
 
 	return 0;
 }
-*/
+
 
 //answer version
 //依然看不懂
@@ -1919,4 +1919,147 @@ int main()
 		printf("c is the one\n");
 	if(i == 4)
 		printf("d is the one\n");
+}
+
+
+//6.5旅客国籍
+//描述：在一个旅馆中住着 6 个不同国籍的人，他们分别来自美国、德国、英国、法国、俄罗斯和意大利这几个国家
+//他们分别叫A B C D E F 现已知
+//1. A 和 美国人是医生
+//2. E 和 俄罗斯人是教师
+//3. C 和 德国人是技师
+//4. B 和 F 曾经当过兵，而德国人从未参过军
+//5. 法国人比 A 年龄大， 意大利人比 C 年龄大
+//6. B 同美国人下周要去西安旅行， 而 C 同法国人下周要去杭州度假
+//现要求根据上述已知条件， 求出 A B C D E F 各是哪国人
+//WTF……
+//largerthanlife
+//23/04/2018
+//113种
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define AMERICAN 0
+#define GERMAN 1
+#define ENGLISH 2
+#define FRENCH 3
+#define RUSSIA 4
+#define ITALIAN 5
+//enum nameindex = {AMERICAN, GERMAN, ENGLISH, FRENCH, RUSSIA, ITALIAN};
+const char *(namelist[6]) = {"American", "German", "English", "French", "Russia", "Italian"};
+bool checklist(int A, int B, int C, int D, int E, int F)
+{
+	return A != AMERICAN && A != FRENCH
+		&& B != AMERICAN && B != GERMAN
+		&& C != GERMAN && C != FRENCH && C != ITALIAN
+		&& E != RUSSIA
+		&& F != GERMAN
+		;
+}
+
+bool unequal(int A, int B, int C, int D, int E, int F)
+{
+	return A !=B && A != C && A != D && A != E && A != F
+		&& B != C && B != D && B != E && B != F
+		&& C != D && C != E && C != F
+		&& D != E && D != F
+		&& E != F
+		;
+}
+
+int main()
+{
+	bool isfind = false;
+	void printresult(int A, int B, int C, int D, int E, int F);
+	bool checklist(int A, int B, int C, int D, int E, int F);
+	bool check(int num);
+	int A, B, C, D, E, F;
+	for(A = AMERICAN; A <= ITALIAN; A ++)
+		for(B = AMERICAN; B <= ITALIAN && !isfind ; B ++)
+			for(C = AMERICAN; C <= ITALIAN && !isfind; C ++)
+				for(D = AMERICAN; D <= ITALIAN && !isfind; D ++)
+					for(E = AMERICAN; E <= ITALIAN && !isfind; E ++)
+						for(F = AMERICAN; F <= ITALIAN && !isfind; F ++)
+							if(checklist(A, B, C, D, E, F) && unequal(A, B, C, D, E, F))
+							{
+								printresult(A, B, C, D, E, F);
+								isfind = true;
+							}
+
+	return 0;
+}
+
+void printresult(int A, int B, int C, int D, int E, int F)
+{
+	static int i = 1;
+	printf("%d:******************\n", i++);
+	printf("A is %s\n", namelist[A]);
+	printf("B is %s\n", namelist[B]);
+	printf("C is %s\n", namelist[C]);
+	printf("D is %s\n", namelist[D]);
+	printf("E is %s\n", namelist[E]);
+	printf("F is %s\n", namelist[F]);
+}
+*/
+
+//answer version
+//23/04/2018
+#include <stdio.h>
+#include <stdlib.h>
+char *m[7] = {" ", "American", "England", "French", "German", "Italy", "Russia"};
+int main()
+{
+	int a[7][7], i, j, t, e, x, y;
+	for(i = 0; i < 7; i++)		//初始化条件矩阵
+		for(j = 0; j < 7; j++)		//行为人，列为国家，元素的值表示某人是该国人
+			a[i][j] = j;
+	for(i = 1; i < 7; i++)
+		a[0][i] = 1;
+	a[1][1] = a[2][1] = a[3][1] = a[5][1] = 0;
+	a[1][3] = a[2][3] = a[3][3] = 0;
+	a[1][4] = a[2][4] = a[3][4] = a[5][4] = a[6][4] = 0;
+	a[3][5] = 0;
+	a[1][6] = a[3][6] = a[5][6] = 0;
+	while(a[0][1] + a[0][2] + a[0][3] + a[0][4] + a[0][5] + a[0][6] > 0)
+	{
+		/*当所有 6 列均处理完毕后退出循环*/
+		for(i = 1; i < 7; i++) /*i: 列坐标*/
+			if(a[0][i])	//若该列尚未处理， 则进行处理
+			{
+				for(e = 0, j = 1; j < 7; j++)	// j 变量保存行坐标， e 变量是该列中非零元素计数器
+					if(a[j][i])
+					{
+						x = j;
+						y = i;
+						e++;
+					}
+				if(e == 1)
+				{
+					for(t = 1; t < 7; t++)
+						if(t != i)
+							a[x][t] = 0;
+							a[0][y] = 0;
+				}
+			}
+	}
+	printf("final matrix:\n");
+	for(i = 0; i < 7; i++)
+	{
+		for(j = 0; j < 7; j++)
+			printf("%d ", a[i][j]);
+		printf("\n");
+	}
+	printf("\nresult : \n");
+	for(i = 1; i < 7; i++)
+	{
+		printf("%c is from: ", 'A' - 1 + i);
+		for(j = 1; j < 7; j++)
+			if(a[i][j] != 0)
+			{
+				printf("%s.\n", m[a[i][j]]);
+				break;
+			}
+	}
+	return 0;
 }
